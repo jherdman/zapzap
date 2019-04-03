@@ -7,7 +7,7 @@ export default Service.extend({
     this.set('bucket', {});
   },
 
-  addItem({ data: { type, id, attributes } }) {
+  addItem({ type, id, attributes }) {
     if (typeof this.bucket[type] === 'undefined') {
       this.bucket[type] = {};
     }

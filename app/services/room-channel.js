@@ -6,6 +6,7 @@ export const CHANNEL_NAME = 'room:lobby';
 
 export const CHANNEL_EVENTS = {
   NEW_MESSAGE: 'new:msg',
+  QUERY_MESSAGES: 'query:msgs',
 };
 
 export default Service.extend({
@@ -39,7 +40,7 @@ export default Service.extend({
   _registerChannelHandlers() {
     this.channel.on(
       CHANNEL_EVENTS.NEW_MESSAGE,
-      (payload) => {
+      ({ data }) => {
         let newMessage = this.shittyStore.addItem(payload);
 
         this.set('mostRecentMessageSentAt', newMessage.sentAt);
@@ -47,6 +48,26 @@ export default Service.extend({
         return newMessage;
       }
     );
+  },
+
+  backfillMessages() {
+    this.channel.push(CHANNEL_EVENTS.QUERY_MESSAGES)
+      .receive(
+        'ok',
+        ({ data }) => {
+          let messages = data
+            .map((payload) => {
+              return this.shittyStore.addItem(payload);
+            })
+            .sortBy('sentAt');
+
+          let mostRecentMessage = messages.get('lastObject');
+
+          this.set('mostRecentMessageSentAt', mostRecentMessage.sentAt);
+
+          return messages;
+        }
+      );
   },
 
   publishMessage(newMessage) {
