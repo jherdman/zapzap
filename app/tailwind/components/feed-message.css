@@ -1,0 +1,11 @@
+.FeedMessage {
+  @apply bg-white border-solid border-2 border-grey-dark rounded m-2 p-2 shadow-md;
+}
+
+.FeedMessage-author {
+  @apply text-grey-darker;
+}
+
+.FeedMessage-date {
+  @apply text-grey text-xs;
+}

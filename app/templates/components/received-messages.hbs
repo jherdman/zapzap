@@ -1,0 +1,34 @@
+<div class="hidden">
+  {{mostRecentMessageSentAt}}
+</div>
+
+{{#each messages as |message|}}
+  <MessageItem
+    @body={{message.body}}
+    @sentAt={{message.sentAt}}
+    @from={{message.from}}
+  />
+{{else}}
+  <div
+    class="text-grey-darker leading-normal"
+  >
+    <blockquote
+      class="mb-4 pl-4 border-grey border-l-4 border-solid"
+    >
+      <p>
+        Out beyond ideas of wrongdoing<br>
+        and rightdoing there is a field.<br>
+        I'll meet you there.<br>
+        <br>
+        When the soul lies down in that grass<br>
+        the world is too full to talk about.<br>
+      </p>
+    </blockquote>
+
+    <cite
+      class="italic"
+    >
+      Jalal Ad-Din Rumi
+    </cite>
+  </div>
+{{/each}}

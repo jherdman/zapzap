@@ -1,0 +1,13 @@
+<div class="text-grey-dark">
+  <span class="font-bold">
+    {{@from}}
+  </span>
+
+  <time datetime={{utc (moment @sentAt "YYYY-MM-DD HH:mm:ssZ")}}>
+    {{moment-from localSentAt}}
+  </time>
+</div>
+
+<div class="leading-normal">
+  {{render-markdown @body}}
+</div>
