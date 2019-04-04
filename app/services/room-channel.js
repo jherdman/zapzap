@@ -41,7 +41,7 @@ export default Service.extend({
     this.channel.on(
       CHANNEL_EVENTS.NEW_MESSAGE,
       ({ data }) => {
-        let newMessage = this.shittyStore.addItem(payload);
+        let newMessage = this.shittyStore.addItem(data);
 
         this.set('mostRecentMessageSentAt', newMessage.sentAt);
 
@@ -63,7 +63,9 @@ export default Service.extend({
 
           let mostRecentMessage = messages.get('lastObject');
 
-          this.set('mostRecentMessageSentAt', mostRecentMessage.sentAt);
+          if (mostRecentMessage) {
+            this.set('mostRecentMessageSentAt', mostRecentMessage.sentAt);
+          }
 
           return messages;
         }
