@@ -5,6 +5,10 @@ import { computed } from '@ember/object';
 export default Component.extend({
   classNames: 'bg-grey-lightest border-2 border-grey border-solid ember-view p-4 rounded shadow mb-4',
 
+  classNameBindings: [
+    'isSentToSelf:bg-blue-lightest:bg-green-lightest',
+  ],
+
   didRender() {
     this.element.scrollIntoView();
   },
