@@ -4,6 +4,7 @@
 
 {{#each messages as |message|}}
   <MessageItem
+    @nickname={{@nickname}}
     @body={{message.body}}
     @sentAt={{message.sentAt}}
     @from={{message.from}}
@@ -25,9 +26,7 @@
       </p>
     </blockquote>
 
-    <cite
-      class="italic"
-    >
+    <cite class="italic">
       Jalal Ad-Din Rumi
     </cite>
   </div>
