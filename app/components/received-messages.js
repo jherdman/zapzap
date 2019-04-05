@@ -10,10 +10,10 @@ import { connect } from 'ember-redux';
 
 import { getMessages } from '../reducers/messages';
 
+import { getMyNickname } from '../reducers/nicknames';
+
 const ReceivedMessages = Component.extend({
   roomChannel: service(),
-
-  //shittyStore: service(),
 
   //didInsertElement() {
   //  this._super(...arguments);
@@ -22,14 +22,11 @@ const ReceivedMessages = Component.extend({
   //},
 
   mostRecentMessageSentAt: readOnly('roomChannel.mostRecentMessageSentAt'),
-
-  //messages: computed('mostRecentMessageSentAt', function() {
-  //  return this.shittyStore.listItems('message');
-  //}),
 });
 
 const stateToComputed = state => ({
   messages: getMessages(state),
+  nickname: getMyNickname(state),
 });
 
 export default connect(stateToComputed)(ReceivedMessages);

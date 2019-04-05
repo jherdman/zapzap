@@ -6,6 +6,8 @@ import { connect } from 'ember-redux';
 
 import { addMessage } from '../actions/messages';
 
+import { getMyNickname } from '../reducers/nicknames';
+
 const NewMessageForm = Component.extend({
   tagName: 'form',
 
@@ -17,11 +19,18 @@ const NewMessageForm = Component.extend({
     event.preventDefault();
     event.stopPropagation();
 
-    let { messageToSend } = this;
+    let {
+      nickname: from,
+      messageToSend: body,
+    } = this;
 
     //this.roomChannel.publishMessage(messageToSend);
 
-    this.actions.addMessage(messageToSend);
+    this.actions.addMessage({
+      from,
+      body,
+      sentAt: new Date(),
+    });
 
     this.set('messageToSend');
   },
@@ -29,16 +38,14 @@ const NewMessageForm = Component.extend({
   willDestroyElement() {
     //this.roomChannel.disconnect();
   },
+});
 
-  actions: {
-    setNewMessage(newMessage) {
-      this.set('messageToSend', newMessage);
-    },
-  },
+const stateToComputed = state => ({
+  nickname: getMyNickname(state),
 });
 
 const dispatchToActions = {
   addMessage,
 };
 
-export default connect(null, dispatchToActions)(NewMessageForm);
+export default connect(stateToComputed, dispatchToActions)(NewMessageForm);

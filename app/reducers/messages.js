@@ -2,13 +2,7 @@ import * as types from '../actions/types';
 
 const initialState = {
   filter: undefined,
-  all: {
-    1: {
-      from: 'Kristen',
-      body: 'Hi!',
-      sentAt: new Date(),
-    },
-  },
+  all: {},
 };
 
 export default function messages(state, action) {
@@ -22,22 +16,20 @@ export default function messages(state, action) {
   }
 }
 
-function addMessage(currentState, { payload: messageBody }/*{data: {attributes, id}}*/) {
-  //let message = {id: {id, ...atributes}};
-
+function addMessage(currentState, { payload }/*{data: {attributes, id}}*/) {
   let id = Math.round(Math.random() * 100);
 
-  let message = { [id]: { id, from: "Fake", body: messageBody, sentAt: new Date() } };
+  let message = { [id]: { id, ...payload } };
 
   let messages = {
     ...currentState.all,
     ...message,
   };
 
-  return {...currentState.all, ...{all: messages}};
+  return { ...currentState.all, ...{ all: messages } };
 }
 
-export function getMessage({ all }, id) {
+export function getMessage({ messages: { all } }, id) {
   return all && all[id];
 }
 

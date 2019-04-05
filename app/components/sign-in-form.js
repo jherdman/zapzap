@@ -4,7 +4,11 @@ import { readOnly } from '@ember/object/computed';
 
 import { inject as service } from '@ember/service';
 
-export default Component.extend({
+import { connect } from 'ember-redux';
+
+import { signIn } from '../actions/nicknames';
+
+const SignInForm = Component.extend({
   tagName: 'form',
 
   classNames: 'bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4',
@@ -13,7 +17,7 @@ export default Component.extend({
 
   roomChannel: service(),
 
-  nickname: readOnly('current.nickname'),
+  nickname: undefined,
 
   //tryToJoinAndConnect() {
   //  let { nickname } = this;
@@ -26,6 +30,10 @@ export default Component.extend({
     event.preventDefault();
     event.stopPropagation();
 
+    let { nickname } = this;
+
+    this.actions.signIn(nickname);
+
     //this.tryToJoinAndConnect();
 
     this.onSubmit();
@@ -36,10 +44,10 @@ export default Component.extend({
 
   //  this.tryToJoinAndConnect();
   //},
-
-  actions: {
-    updateNickname(newNickname) {
-      this.set('current.nickname', newNickname);
-    },
-  },
 });
+
+const dispatchToActions = {
+  signIn,
+};
+
+export default connect(null, dispatchToActions)(SignInForm);
