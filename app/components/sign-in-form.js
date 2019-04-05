@@ -15,27 +15,27 @@ export default Component.extend({
 
   nickname: readOnly('current.nickname'),
 
-  tryToJoinAndConnect() {
-    let { nickname } = this;
+  //tryToJoinAndConnect() {
+  //  let { nickname } = this;
 
-    this.roomChannel.connect();
-    this.roomChannel.join(nickname);
-  },
+  //  this.roomChannel.connect();
+  //  this.roomChannel.join(nickname);
+  //},
 
   submit(event) {
     event.preventDefault();
     event.stopPropagation();
 
-    this.tryToJoinAndConnect();
+    //this.tryToJoinAndConnect();
 
     this.onSubmit();
   },
 
-  didInsertElement() {
-    this._super(...arguments);
+  //didInsertElement() {
+  //  this._super(...arguments);
 
-    this.tryToJoinAndConnect();
-  },
+  //  this.tryToJoinAndConnect();
+  //},
 
   actions: {
     updateNickname(newNickname) {

@@ -23,6 +23,7 @@
     "@precision-nutrition/render-markdown": "^3.0.0",
     "broccoli-asset-rev": "^2.7.0",
     "ember-ajax": "^4.0.1",
+    "ember-auto-import": "^1.2.21",
     "ember-cli": "~3.8.1",
     "ember-cli-app-version": "^3.2.0",
     "ember-cli-babel": "^7.1.2",
@@ -43,12 +44,19 @@
     "ember-moment": "^7.8.1",
     "ember-phoenix": "^1.0.3",
     "ember-qunit": "^3.4.1",
+    "ember-redux": "^4.0.3",
+    "ember-redux-shim": "^4.0.1",
+    "ember-redux-thunk-shim": "^2.5.0",
     "ember-resolver": "^5.0.1",
     "ember-source": "~3.8.0",
+    "ember-symbol-observable": "1.0.2",
     "eslint-plugin-ember": "^5.2.0",
     "liquid-fire": "^0.29.5",
     "loader.js": "^4.7.0",
-    "qunit-dom": "^0.8.0"
+    "qunit-dom": "^0.8.0",
+    "redux": "4.0.0",
+    "redux-thunk": "2.3.0",
+    "reselect": "^4.0.0"
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"

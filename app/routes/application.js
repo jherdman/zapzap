@@ -15,8 +15,8 @@ export default Route.extend({
     } = this;
 
     if (nickname) {
-      this.roomChannel.connect();
-      this.roomChannel.join(nickname);
+      //this.roomChannel.connect();
+      //this.roomChannel.join(nickname);
 
       this.transitionTo('feed');
     } else {

@@ -2,7 +2,7 @@
   class="flex items-center border-b border-b-2 border-teal py-2"
 >
   <input
-    oninput={{action "setNewMessage" value="target.value"}}
+    oninput={{action (mut messageToSend) value="target.value"}}
     required
     value={{messageToSend}}
     class="appearance-none bg-transparent border-none w-full text-grey-darker mr-3 py-1 px-2 leading-tight focus:outline-none resize-none"
