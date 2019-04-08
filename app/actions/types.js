@@ -1,3 +1,17 @@
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 
 export const SIGN_IN = 'SIGN_IN';
+
+export const SET_UP_SOCKET = 'SOCKET:SET_UP';
+
+export const SOCKET_CONNECTED = 'SOCKET:CONNECTED';
+
+export const SOCKET_DISCONNECTED = 'SOCKET:DISCONNECTED';
+
+export const DISCONNECT_SOCKET = 'SOCKET:DISCONNECT';
+
+export const SOCKET_ERROR = 'SOCKET:ERROR';
+
+export const JOIN_CHANNEL = 'CHANNEL:JOIN';
+
+export const LEAVE_CHANNEL = 'CHANNEL:LEAVE';

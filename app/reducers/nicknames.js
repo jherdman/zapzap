@@ -1,9 +1,11 @@
 import * as types from '../actions/types';
 
+let initialNickname = localStorage.getItem('user:nickname');
+
 const initialState = {
   filter: undefined,
-  mine: undefined,
-  all: [],
+  mine: initialNickname,
+  all: [initialNickname],
 };
 
 export default function nicknames(state, action) {

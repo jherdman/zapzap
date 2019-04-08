@@ -2,25 +2,27 @@ import Route from '@ember/routing/route';
 
 import { inject as service } from '@ember/service';
 
-export default Route.extend({
-  current: service(),
+import { connect } from 'ember-redux';
 
+import { getMyNickname } from '../reducers/nicknames';
+
+const Application = Route.extend({
   roomChannel: service(),
 
   beforeModel() {
-    let {
-      current: {
-        nickname,
-      },
-    } = this;
-
-    if (nickname) {
+    if (this.nickname) {
       //this.roomChannel.connect();
       //this.roomChannel.join(nickname);
 
-      this.transitionTo('feed');
+      return this.transitionTo('feed');
     } else {
       return this.transitionTo('sign-in');
     }
   },
 });
+
+const stateToComputed = state => ({
+  nickname: getMyNickname(state),
+});
+
+export default connect(stateToComputed)(Application);

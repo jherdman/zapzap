@@ -79,7 +79,7 @@ export default Service.extend({
         data: {
           attributes: {
             message: newMessage,
-            sentAt: new Date(),
+            sentAt: Date.now(),
           },
           type: 'message',
         }

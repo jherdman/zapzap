@@ -1,7 +1,5 @@
 import Component from '@ember/component';
 
-import { inject as service } from '@ember/service';
-
 import { connect } from 'ember-redux';
 
 import { addMessage } from '../actions/messages';
@@ -12,8 +10,6 @@ const NewMessageForm = Component.extend({
   tagName: 'form',
 
   classNames: 'bg-white px-8 pt-6 pb-8',
-
-  roomChannel: service(),
 
   submit(event) {
     event.preventDefault();
